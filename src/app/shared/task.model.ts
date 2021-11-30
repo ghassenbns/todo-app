@@ -1,4 +1,4 @@
-export class User {
+export class task {
   public title: string;
   public time: string;
 

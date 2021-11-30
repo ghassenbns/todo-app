@@ -4,7 +4,7 @@ export class User {
   public name: string;
   public email: string;
   public password: string;
-  public tasks: task[];
+  public tasks?: task[];
 
   constructor(name: string, email: string, password: string, tasks: task[]) {
     this.name = name;
