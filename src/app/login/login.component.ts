@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {}
 
+  onLogin(loginForm: NgForm) {
+    if (loginForm.valid) {
+      console.log(loginForm);
+    } else {
+      alert('False');
+    }
+  }
+  onRegister() {
+    this.router.navigate(['register']);
+  }
 }
