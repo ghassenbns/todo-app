@@ -24,3 +24,33 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+// Apply to all
+.img-bg{
+    padding: 1px;
+    height: 100%;
+    width : 100%;
+    background-image: url('./assets/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.text-form-header{
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+.grid-layout{
+    margin-top: 100px;
+}
+.margin-button{
+    margin-top: 50px;  
+}
+
+//Login component
+.register-button-right{
+    margin-top: 180px;
+    text-align: right;
+    justify-content: right;
+}
