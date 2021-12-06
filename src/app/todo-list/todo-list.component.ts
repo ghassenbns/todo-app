@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { UserAuthService } from '../shared/user-auth.service';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -11,7 +12,10 @@ export class TodoListComponent implements OnInit {
   myTask = '';
   tasks = [];
 
-  constructor(public afDB: AngularFireDatabase) {
+  constructor(
+    public afDB: AngularFireDatabase,
+    public userService: UserAuthService
+  ) {
     const date = new Date();
     this.currentDate = date.toLocaleDateString();
     this.getTasks();
@@ -28,6 +32,7 @@ export class TodoListComponent implements OnInit {
       text: this.myTask,
       date: new Date().toISOString(),
       checked: false,
+      uid: this.userService.uid,
     });
     this.showForm();
   }
