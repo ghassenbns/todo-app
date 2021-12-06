@@ -18,11 +18,7 @@ export class TodoListComponent implements OnInit {
   }
 
   ngOnInit() {}
-  add() {
-    this.afDB.list('User/').push({
-      pseudo: 'rim',
-    });
-  }
+
   showForm() {
     this.addTask = !this.addTask;
     this.myTask = '';
