@@ -66,7 +66,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   deleteTask(task: any) {
     this.afDB.list('Tasks/').remove(task.key);
   }
-  //Avoid perfomance leaks
+  //Avoid perfomance leaks by unsubscribing
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
