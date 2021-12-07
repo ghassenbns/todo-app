@@ -43,7 +43,13 @@ firebaseConfig: {
     measurementId: 'G-QL82TCJ0T6',
   }
 ```
-
+### Todo-List
+#### Add task 
+You can add a task throught the input field under the list of tasks by entering the description of the task
+#### Delete task 
+To delete a task, swipe the task item to the left and a garbage icon will show up at the right of the ion-item
+#### Logout
+To logout, click on the top right icon , then you'll be redirected to the login screen
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
