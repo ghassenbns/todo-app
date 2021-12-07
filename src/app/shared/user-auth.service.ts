@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { User } from './user.model';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class UserAuthService {
-  uid: string = null;
+  uid: string = null; //Authenticated user id
   constructor(public auth: AngularFireAuth, private router: Router) {}
+
   registerUser(user: User) {
+    //register user by email and password method of firebase auth
     console.log(user);
     this.auth
       .createUserWithEmailAndPassword(user.email, user.password)
@@ -19,6 +20,7 @@ export class UserAuthService {
       .catch((err) => console.log(err));
   }
   loginUser(user: any) {
+    //sign in user by email and password method of firebase auth then set his user id and navigate to todo-list
     this.auth
       .signInWithEmailAndPassword(user.email, user.password)
       .then((res) => {
@@ -28,8 +30,3 @@ export class UserAuthService {
       .catch((err) => console.log(err));
   }
 }
-/*this.fDB
-      .list('users')
-      .push(user)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err)); */

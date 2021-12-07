@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
   constructor(private userService: UserAuthService) {}
 
   ngOnInit() {}
+  //check if register form is valid then register user
   register(registerForm: NgForm) {
     if (
       registerForm.valid &&
