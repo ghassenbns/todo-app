@@ -50,7 +50,7 @@ export class UserAuthService {
     const welcome =await this.alert.create({
       header:header,
       message:message,
-      buttons:['Thank you'],
+      buttons:['Thank you '],
     });
     await welcome.present();
   };
@@ -60,7 +60,7 @@ export class UserAuthService {
     const alert = await this.toast.create({
       header: header,
       message: err,
-      buttons: ['ok']
+      buttons: ['Ok']
     });
     await alert.present();
 };
