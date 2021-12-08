@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { User } from '../shared/user.model';
 import { UserAuthService } from '../shared/user-auth.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -23,5 +24,6 @@ export class RegisterComponent implements OnInit {
       );
       this.userService.registerUser(user);
     }
+
   }
 }

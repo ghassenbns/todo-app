@@ -1,6 +1,12 @@
+
 <ion-content scrollY="false">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>To do app</ion-title>
+    </ion-toolbar>
+  </ion-header>
   <div class="img-bg">
-    <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+    <form  #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
       <h3 class="text-form-header">Login into your account</h3>
       <ion-grid class="grid-layout">
         <ion-row color="primary" justify-content-center>
@@ -16,7 +22,6 @@
                   required
                 ></ion-input>
               </ion-item>
-
               <ion-item>
                 <ion-label position="floating">Password</ion-label>
                 <ion-input
@@ -48,6 +53,7 @@
                 >Register
               </ion-button>
             </div>
+        
           </ion-col>
         </ion-row>
       </ion-grid>

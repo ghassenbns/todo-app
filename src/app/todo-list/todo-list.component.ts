@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Subscription } from 'rxjs';
 import { UserAuthService } from '../shared/user-auth.service';
+
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -15,7 +16,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   subscription: Subscription; //subscription to get Tasks
   constructor(
     public afDB: AngularFireDatabase,
-    public userService: UserAuthService
+    public userService: UserAuthService,
   ) {}
 
   ngOnInit() {
@@ -69,5 +70,9 @@ export class TodoListComponent implements OnInit, OnDestroy {
   //Avoid perfomance leaks by unsubscribing
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  logout() {
+    this.userService.logout();
   }
 }
