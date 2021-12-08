@@ -2,13 +2,17 @@ import { Injectable } from '@angular/core';
 import { User } from './user.model';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { AlertController, ToastController } from '@ionic/angular';
-import { Validators } from "@angular/forms";
+import { ToastController } from '@ionic/angular';
+import { ToastService } from './toast.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserAuthService {
   uid: string = null; //Authenticated user id
-  constructor(public auth: AngularFireAuth, private router: Router, private alert: AlertController ,private toast : ToastController) {}
+  constructor(
+    public auth: AngularFireAuth,
+    private router: Router,
+    private toastService: ToastService
+  ) {}
 
   registerUser(user: User) {
     //register user by email and password method of firebase auth
@@ -18,10 +22,8 @@ export class UserAuthService {
       .then((res) => {
         this.uid = res.user.uid;
         this.router.navigate(['todo-list']);
-        this.welcomeMsg('Welcome',user.email);
-
       })
-      .catch((err) => this.showAlert('Erreur',err));
+      .catch((err) => this.toastService.openToast(err, 'danger'));
   }
 
   loginUser(user: any) {
@@ -31,38 +33,12 @@ export class UserAuthService {
       .then((res) => {
         this.uid = res.user.uid;
         this.router.navigate(['todo-list']);
-        this.welcomeMsg('Welcome',user.email)     
       })
-      .catch((err) => this.showAlert('Erreur',err))
-       //console.log("Firebase failure: " + JSON.stringify(err)))
+      .catch((err) => this.toastService.openToast(err, 'danger'));
   }
-  
-    //logout user method of firebase auth
   logout() {
-    console.log("logout clicked");
-    this.auth.signOut().then(() => {
-      this.router.navigate(['login']);
-    })
+    //Reset User id and navigate to login
+    this.uid = null;
+    this.router.navigate(['login']);
   }
-
-  //Welcoming message alert 
-  async welcomeMsg(header,message){
-    const welcome =await this.alert.create({
-      header:header,
-      message:message,
-      buttons:['Thank you '],
-    });
-    await welcome.present();
-  };
-
-//Alert toast for errors inputs 
-  async showAlert (header,err) {
-    const alert = await this.toast.create({
-      header: header,
-      message: err,
-      buttons: ['Ok']
-    });
-    await alert.present();
-};
-
 }
